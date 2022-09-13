@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: deploy-public-api
+  namespace: public
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: public-api
+  template:
+    metadata:
+      name: public-api
+      labels:
+        app: public-api
+    spec:
+      containers:
+      - name: public-api
+        image: cachac/kubelabs_publicapi:1.0.1
+        ports:
+        - containerPort: 3000
+          name: public-api
+        - containerPort: 3080
+          name: healthcheck
+        resources:
+          limits:
+            cpu: 200m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 3080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 3080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 5
+        envFrom:
+          - configMapRef:
+              name: cm-private-api
+              
+      #   volumeMounts:
+      #     - name: vol-logs
+      #       mountPath: /app/logs
+      # volumes:
+      #   - name: vol-logs
+      #     persistentVolumeClaim:
+      #       claimName: pvc-public-api
+
