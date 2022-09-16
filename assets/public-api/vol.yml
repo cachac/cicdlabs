@@ -2,8 +2,11 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: sc-public-api
-  namespace: public
-provisioner: microk8s.io/hostpath
+  namespace: sc-public-api
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-balanced
+  fstype: ext4
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Retain
 ---
@@ -16,7 +19,7 @@ metadata:
 spec:
   storageClassName: sc-public-api
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 50Mi

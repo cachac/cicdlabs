@@ -1,0 +1,23 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: filestore-devops
+provisioner: filestore.csi.storage.gke.io
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+parameters:
+  tier: standard
+  network: kube
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fs-storage
+  namespace: public
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: filestore-devops
+  resources:
+    requests:
+      storage: 1Gi

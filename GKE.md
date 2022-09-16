@@ -1,13 +1,29 @@
 # Install GKE
+## VPC Network (see GCP project)
 
+## New cluster
+- zonal: us-east1-b
+- release channel
+- default-pool:
+- - Nodes: spot?
+- Cluster:
+- - Automation: node autoscaling, node pool locations
+- - Networking: vpc network - private subnet - private cluster (172.16.0.0/28) - Enable control plane authorized networks (OPTIONAL)
+- - features: Enable Filestore CSI
 ## Access
 
+```vim
+PROJECT_ID=golden-plateau-358415
+CLUSTER=cluster-lab
+ZONE=us-east1-b
+
+echo $PROJECT_ID $CLUSTER $ZONE
+
 gcloud auth login
-gcloud container clusters get-credentials labcluster --zone us-central1-c --project golden-plateau-358415
-
-https://stackoverflow.com/questions/72274548/how-to-remove-warning-in-kubectl-with-gcp-auth-plugin
-
-
-ej:
+gcloud config set project $PROJECT_ID
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-gcloud container clusters get-credentials labcluster --zone us-central1-c --project golden-plateau-358415
+gcloud container clusters get-credentials $CLUSTER --zone $ZONE --project $PROJECT_ID
+```
+
+> [auth plugin warn](https://stackoverflow.com/questions/72274548/how-to-remove-warning-in-kubectl-with-gcp-auth-plugin)
+

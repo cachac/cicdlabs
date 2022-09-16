@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: deploy-public-api
-  namespace: public
+  name: public-api
+  # namespace: public
 
 spec:
-  replicas: 4
+  # replicas: 0
 
-  selector:
-    matchLabels:
-      app: public-api
+  # selector:
+  #   matchLabels:
+  #     app: public-api
   template:
     metadata:
       name: public-api
-      labels:
-        app: public-api
+      # labels:
+      #   app: public-api
     spec:
       imagePullSecrets:
         - name: regcred
       containers:
       - name: public-api
-        image: REGISTRY/IMAGE:VERSION
-        # imagePullPolicy: Always
+        image: KUSTOMIZE-DEFINED
+        imagePullPolicy: Always
 
         ports:
         - containerPort: 3000
@@ -52,12 +52,11 @@ spec:
           - configMapRef:
               name: cm-private-api
 
-      #   volumeMounts:
-      #     - name: vol-logs
-      #       mountPath: /app/logs
-      # volumes:
-      #   - name: vol-logs
-      #     persistentVolumeClaim:
-      #       claimName: pvc-public-api
-      #       claimName: fs-storage
+        volumeMounts:
+          - name: vol-logs
+            mountPath: /app/logs
+      volumes:
+        - name: vol-logs
+          persistentVolumeClaim:
+            claimName: fs-storage
 

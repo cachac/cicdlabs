@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: lb-http-to-https
+  namespace: public
+spec:
+  redirectToHttps:
+    enabled: true
