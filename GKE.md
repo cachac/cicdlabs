@@ -1,7 +1,10 @@
 # Install GKE
-## VPC Network (see GCP project)
 
-## New cluster
+# gmail accounts
+## add users
+# VPC Network (see GCP project)
+
+# New cluster
 - zonal: us-east1-b
 - release channel
 - default-pool:
