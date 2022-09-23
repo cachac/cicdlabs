@@ -30,3 +30,4 @@ gcloud container clusters get-credentials $CLUSTER --zone $ZONE --project $PROJE
 
 > [auth plugin warn](https://stackoverflow.com/questions/72274548/how-to-remove-warning-in-kubectl-with-gcp-auth-plugin)
 
+# Grant Roles
