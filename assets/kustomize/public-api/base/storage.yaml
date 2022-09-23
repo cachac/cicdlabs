@@ -9,7 +9,7 @@ spec:
   - ReadWriteMany
   nfs:
     path: /volumes           # CHANGE PATH
-    server: 10.19.174.138    # CHANGE SERVER IP
+    server: 10.191.231.226   # CHANGE SERVER IP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

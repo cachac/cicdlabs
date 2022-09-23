@@ -10,7 +10,7 @@ NETWORK = {
 GKE = {
   CLUSTER_NAME = "cicd01"
   ZONE         = "us-east1-b"
-  NODE_COUNT   = 1
+  NODE_COUNT   = 2
   MACHINE_TYPE = "e2-small" # e2-medium
 
   FILESTORE = true # NFS

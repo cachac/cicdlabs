@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/rules/0/host
-  value: api-stage.cachac.kubelabs2.tk
+  value: api.cachac.kubelabs2.tk
 
 # ejemplo cambiar puerto del backend
 # - op: replace

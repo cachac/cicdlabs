@@ -22,7 +22,6 @@ FSADDR=$(gcloud beta filestore instances describe ${FS} \
 ACCOUNT=$(gcloud config get-value core/account)
 echo $ACCOUNT $FSADDR
 
--
 
 
 
