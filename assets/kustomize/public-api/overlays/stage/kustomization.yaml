@@ -42,6 +42,6 @@ patches:
 # Image patch
 images:
   - name: KUSTOMIZE-DEFINED
-    newName: cachac/kubelabs_publicapi_test
+    newName: cachac/stage_kubelabs_publicapi_test
     newTag: 1.0.1
 
