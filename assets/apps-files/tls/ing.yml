@@ -16,6 +16,7 @@ spec:
     - secretName: ssl
       hosts:
         - KUSTOMIZE-DEFINED
+
   rules:
   - host: KUSTOMIZE-DEFINED
     http:
