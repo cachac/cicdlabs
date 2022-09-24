@@ -1,0 +1,8 @@
+- op: replace
+  path: /spec/rules/0/host
+  value: api-stage.cachac.kubelabs2.tk
+
+# TLS
+- op: replace
+  path: /spec/tls/0/hosts/0
+  value: api-stage.cachac.kubelabs2.tk
