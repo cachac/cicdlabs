@@ -20,6 +20,6 @@
 
 # test-no ssl
 # - op: remove
-#   path: /metadata/annotations/cert-manager.io~1cluster-issuer
+#   path: /metadata/annotations/cert-manager.io~1issuer
 # - op: remove
 #   path: /spec/tls
