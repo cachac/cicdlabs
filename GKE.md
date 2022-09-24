@@ -24,6 +24,11 @@ echo $PROJECT_ID $CLUSTER $ZONE
 
 gcloud auth login
 gcloud config set project $PROJECT_ID
+
+# auth plugin
+# gcloud components install gke-gcloud-auth-plugin
+sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 gcloud container clusters get-credentials $CLUSTER --zone $ZONE --project $PROJECT_ID
 ```
