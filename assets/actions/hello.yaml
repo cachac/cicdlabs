@@ -1,0 +1,45 @@
+name: hello-world
+
+# trigger
+on:
+  push:
+    branches: ["stage"]
+
+# pipeline
+jobs:
+
+  print: # job name
+    runs-on: ubuntu-latest # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+
+    steps:
+      - name: print-to-screen
+        run: echo "Hello World!"
+
+
+# name: hello-world
+# on:
+#   push:
+#     branches: ["stage"]
+
+# env:
+#   TEXT: "mi nombre completo"
+
+# jobs:
+
+#   print: # job name
+#     runs-on: ubuntu-latest # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+
+#     steps:
+#       - name: print-to-screen
+#         run: echo "Hello World ${{ secrets.MY_NAME }}!"
+
+#       - name: The job has succeeded?
+#         if: ${{ success() }}
+#         run: return 1
+
+
+#       - name: The job has failed?
+#         if: ${{ failure() }}
+#         run: echo "Job Fails :("
+
+
