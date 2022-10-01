@@ -22,6 +22,7 @@ ZONE=us-east1-b
 
 echo $PROJECT_ID $CLUSTER $ZONE
 
+curl https://sdk.cloud.google.com | bash
 gcloud auth login
 gcloud config set project $PROJECT_ID
 
