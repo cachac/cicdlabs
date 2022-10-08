@@ -44,8 +44,8 @@ patches:
     path: pv-patch.yaml
   - target:
       kind: PersistentVolumeClaim
-      name: fs-storage
-    path: pv-patch.yaml
+      name: filestore-nfs-pvc
+    path: pvc-patch.yaml
 
 # Image patch
 images:

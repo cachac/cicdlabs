@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: deploy-public-api
+  name: public-api
   namespace: public-stage
 
 spec:
