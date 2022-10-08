@@ -1,13 +1,13 @@
-# FileStore NFS <!-- omit in toc-->
+# 1. FileStore NFS <!-- omit in toc-->
 >[incof](https://cloud.google.com/community/tutorials/gke-filestore-dynamic-provisioning)
 
 > $200/mo
-# Enable api
+# 2. Enable api
 ```vim
 gcloud services enable file.googleapis.com
 ```
 
-# Create  NFS
+# 3. Create  NFS
 ```vim
 FS=[NAME FOR THE FILESTORE YOU WILL CREATE]
 NETWORK=gke-network01
@@ -24,7 +24,7 @@ gcloud beta filestore instances create ${FS} \
   --network=name=${NETWORK}
 ```
 
-# Get address
+# 4. Get address
 ```vim
 FSADDR=$(gcloud beta filestore instances describe ${FS} \
   --project=${PROJECT_ID} \
