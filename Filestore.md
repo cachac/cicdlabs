@@ -1,9 +1,20 @@
-https://cloud.google.com/community/tutorials/gke-filestore-dynamic-provisioning
+# FileStore NFS <!-- omit in toc-->
+>[incof](https://cloud.google.com/community/tutorials/gke-filestore-dynamic-provisioning)
 
+> $200/mo
+# Enable api
+```vim
 gcloud services enable file.googleapis.com
+```
 
+# Create  NFS
+```vim
 FS=[NAME FOR THE FILESTORE YOU WILL CREATE]
-NETWORK=kube
+NETWORK=gke-network01
+PROJECT_ID=[PROJECT NAME]
+ZONE=useast1-b
+
+echo $FS - $NETWORK - PROJECT_ID - $ZONE
 
 gcloud beta filestore instances create ${FS} \
   --project=${PROJECT_ID} \
@@ -11,9 +22,10 @@ gcloud beta filestore instances create ${FS} \
   --tier=STANDARD \
   --file-share=name="volumes",capacity=1TB \
   --network=name=${NETWORK}
+```
 
-# $200/mo
-
+# Get address
+```vim
 FSADDR=$(gcloud beta filestore instances describe ${FS} \
   --project=${PROJECT_ID} \
   --zone=${ZONE} \
@@ -21,6 +33,9 @@ FSADDR=$(gcloud beta filestore instances describe ${FS} \
 
 ACCOUNT=$(gcloud config get-value core/account)
 echo $ACCOUNT $FSADDR
+
+```
+
 
 
 
