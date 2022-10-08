@@ -17,7 +17,7 @@
 
 ```vim
 PROJECT_ID=golden-plateau-358415
-CLUSTER=cluster-lab
+CLUSTER=cicd01
 ZONE=us-east1-b
 
 echo $PROJECT_ID $CLUSTER $ZONE
