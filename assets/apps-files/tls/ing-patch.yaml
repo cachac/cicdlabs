@@ -11,7 +11,8 @@
   value: api-stage.<NAME>.kubelabs2.tk
 
 - op: add
-  path: /metadata/annotations/cert-manager.io~1issuer
+  # path: /metadata/annotations/cert-manager.io~1issuer
+  path: /metadata/annotations/cert-manager.io~1cluster-issuer
   value: letsencrypt-prod # letsencrypt-staging
 
 # HTTPS redirect
