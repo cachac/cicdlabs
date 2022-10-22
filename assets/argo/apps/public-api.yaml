@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: default
+    namespace: public-stage
     server: 'https://kubernetes.default.svc'
   source:
     path: public-api/overlays/stage/
