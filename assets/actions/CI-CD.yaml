@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0 # fetch tags
 
       - name: Get TAG version
-        run: echo "RELEASE_VERSION=$(git tag | sort -V | tail -1)" >> $GITHUB_ENV
+        run: echo "RELEASE_VERSION=$(git tag --sort=-creatordate | head -1 )" >> $GITHUB_ENV
 
       - name: New Tag Version
         id: tagVersion
