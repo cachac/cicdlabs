@@ -46,4 +46,12 @@ resource "google_container_cluster" "primary" {
     enable_private_endpoint = false
     master_ipv4_cidr_block  = "172.16.0.0/28"
   }
+
+  # if enable_private_endpoint = true
+  #  master_authorized_networks_config {
+  #    cidr_blocks {
+  #      cidr_block   = "0.0.0.0/0" -> set cidr_block
+  #      display_name = "internal"
+  #    }
+  #  }
 }
