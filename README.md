@@ -3,7 +3,6 @@ github actions + kubernetes + ArgoCD
 
 ![Diagrama General](./assets/img/01.jpeg)
 
-## 01. [Draw.io](./01.Draw.md)
 ## 02. [Github + Dockerhub](./02.Github.md)
 ## 03. [Kubernetes Cluster](./03.KubernetesCluster.md)
 ## 04. [App definition Files](./04.App.md)
