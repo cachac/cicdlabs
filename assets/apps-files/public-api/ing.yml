@@ -12,7 +12,7 @@ metadata:
 
 spec:
   rules:
-  - host: api.USERLAB.kubelabs.tk
+  - host: kubelabs.dev
     http:
       paths:
       - path: /
