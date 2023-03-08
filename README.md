@@ -8,11 +8,11 @@ github actions + kubernetes + ArgoCD
 ## 03. [App definition Files](./03.App.md)
 ## 04. [Kustomize](./04.Kustomize.md)
 ## 05. [Practice](./05.Kustomize%20Practice.md)
-## 07. [GitOPS](./07.ArgoCD.md)
-## 08. [Optional TLS](./08.%20Opcional%20TLS.md)
-## 09. [Practice](./09.ArgoCD%20Practice.md)
-## 10. [Github Actions](./10.Actions.md)
-## 11. [Practice](./11.Actions%20Practice.md)
-## 12. [Full lab](./12.Fulllab.md)
+## 06. [GitOPS](./06.ArgoCD.md)
+## 06b. [Optional TLS](./06b.%20Opcional%20TLS.md)
+## 07. [Practice](./07.ArgoCD%20Practice.md)
+## 08. [Github Actions](./08.Actions.md)
+## 09. [Practice](./09.Actions%20Practice.md)
+## 10. [Full lab](./10.Fulllab.md)
 ## 13. Porfolio
 
