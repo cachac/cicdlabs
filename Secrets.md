@@ -94,3 +94,22 @@ kubectl argo rollouts promote simple-rollout
 
 - canary:
 
+./argo-rollouts-controller
+ns: argo-rollouts
+
+kubectl argo rollouts list rollouts
+kubectl argo rollouts status simple-rollout
+kubectl argo rollouts get rollout simple-rollout
+kubectl argo rollouts set image simple-rollout webserver-simple=docker.io/kostiscodefresh/gitops-canary-app:v2.0
+
+Argo Rollouts creates another replicaset with the new version
+The old version is still there and gets live/active traffic
+The canary version gets 30% of the live traffic.
+ArgoCD will mark the application as out-of-sync
+ArgoCD will also mark the health of the application as "suspended" because we have setup the new color to wait
+At this point the deployment is suspended because we have used the pause properties in the definition of the rollout.
+
+kubectl argo rollouts promote simple-rollout
+
+- Rollback:
+
