@@ -9,7 +9,6 @@ github actions + kubernetes + ArgoCD
 ## 04. [Kustomize](./04.Kustomize.md)
 ## 05. [Practice](./05.Kustomize%20Practice.md)
 ## 06. [GitOPS](./06.ArgoCD.md)
-## 06b. [Optional TLS](./06b.%20Opcional%20TLS.md)
 ## 07. [Practice](./07.ArgoCD%20Practice.md)
 ## 08. [Github Actions](./08.Actions.md)
 ## 09. [Practice](./09.Actions%20Practice.md)
