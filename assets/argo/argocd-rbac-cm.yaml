@@ -1,4 +1,14 @@
 # https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+
+# There are two policy formats:
+# 1. Applications, logs, and exec (which belong to a project):
+# p, <user/group>, <resource>, <action>, <project>/<object>
+# 2. All other resources:
+# p, <user/group>, <resource>, <action>, <object>
+
+# p: permission
+# g: grant
+
 apiVersion: v1
 kind: ConfigMap
 metadata:

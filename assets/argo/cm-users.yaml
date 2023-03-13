@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   # admin.enabled: "false"
-  accounts.carlos: apiKey, login # ADD USER NAME
+  accounts.USERNAME(CHANGE_ME): apiKey, login # ADD USER NAME
   #   apiKey - allows generating API keys
   #   login - allows to login using UI
 
