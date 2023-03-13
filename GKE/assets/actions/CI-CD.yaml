@@ -1,0 +1,97 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["stage"]
+
+env:
+  REGISTRY: cachac
+  IMAGE_NAME: kubelabs_publicapi_test
+  DEPLOY_BRANCH: main
+  DEPLOY_REPO: cachac/deploy-demo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      RELEASE_VERSION: ${{ steps.tagVersion.outputs.RELEASE_VERSION }}
+
+    steps:
+      - uses: actions/checkout@v3 # checkout github code
+        name: Checkout code
+        with:
+          fetch-depth: 0 # fetch tags
+
+      - name: Get TAG version
+        run: echo "RELEASE_VERSION=$(git tag --sort=-creatordate | head -1 )" >> $GITHUB_ENV
+
+      - name: New Tag Version
+        id: tagVersion
+        run: |
+          echo ${{ env.RELEASE_VERSION }}
+          echo "::set-output name=RELEASE_VERSION::${{ env.RELEASE_VERSION }}"
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build & Push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          # file: ./path-to-dockerfile
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }}
+          build-args: |
+            APP_ENV=${{ secrets.APP_ENV }}
+
+      # DOCKER RUN to test container
+      # - name: Build the Docker image
+      #   run: docker run --rm --name api -p 3000:3000 cachac/kubelabs_publicapi_test
+
+      # EXTRA
+      # - uses: "marvinpinto/action-automatic-releases@latest"
+      #   name: Release
+      #   with:
+      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #     automatic_release_tag: ${{ env.VERSION }}
+      #     title: ${{ env.RELEASE }}
+      #     prerelease: false
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+
+    env:
+      VERSION: ${{ needs.build.outputs.RELEASE_VERSION }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ env.DEPLOY_REPO }}
+          ssh-key: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.6.1"
+
+      - name: Update Kubernetes resources
+        run: |
+          cd public-api/overlays/stage
+          kustomize edit set image KUSTOMIZE-DEFINED=${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+
+          # Optional: check yaml files Kustomized
+          kustomize build . > kustomized-apps.yml
+          cat kustomized-apps.yml
+
+      - name: Commit files
+        run: |
+          git config --local user.email "deploy-bot@stotylabs.dev"
+          git config --local user.name "Storylabs deploy-Bot"
+          git add .
+          git commit -am "New image version, branch: staging, tag: ${{ env.VERSION }}"
+          git push --force origin

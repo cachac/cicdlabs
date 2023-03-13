@@ -1,0 +1,11 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: managed-cert
+  namespace: public
+spec:
+  domains:
+    #- kubelabs2.tk
+    #- cachac.kubelabs2.tk
+    #- api-stage.cachac.kubelabs2.tk
+    - api.cachac.kubelabs2.tk

@@ -1,0 +1,27 @@
+- op: replace
+  path: /spec/rules/0/host
+  value: api-stage.<NAME>.kubelabs2.tk
+- op: add
+  path: /metadata/annotations/kubernetes.io~1ingress.global-static-ip-name
+  value: api-static-ip
+
+# TLS
+- op: replace
+  path: /spec/tls/0/hosts/0
+  value: api-stage.<NAME>.kubelabs2.tk
+
+- op: add
+  # path: /metadata/annotations/cert-manager.io~1issuer
+  path: /metadata/annotations/cert-manager.io~1cluster-issuer
+  value: letsencrypt-prod # letsencrypt-staging
+
+# HTTPS redirect
+# - op: add
+#   path: /metadata/annotations/networking.gke.io~1v1beta1.FrontendConfig
+#   value: lb-http-to-https
+
+# test-no ssl
+# - op: remove
+#   path: /metadata/annotations/cert-manager.io~1cluster-issuer
+# - op: remove
+#   path: /spec/tls

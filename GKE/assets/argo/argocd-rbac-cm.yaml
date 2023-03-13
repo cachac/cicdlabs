@@ -1,0 +1,35 @@
+# https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+
+# There are two policy formats:
+# 1. Applications, logs, and exec (which belong to a project):
+# p, <user/group>, <resource>, <action>, <project>/<object>
+# 2. All other resources:
+# p, <user/group>, <resource>, <action>, <object>
+
+# p: permission
+# g: grant
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    p, role:org-admin, applications, *, */*, allow
+    p, role:org-admin, clusters, get, *, allow
+    p, role:org-admin, repositories, get, *, allow
+    p, role:org-admin, repositories, create, *, allow
+    p, role:org-admin, repositories, update, *, allow
+    p, role:org-admin, repositories, delete, *, allow
+    p, role:org-admin, logs, get, *, allow
+    p, role:org-admin, exec, create, */*, allow
+    p, role:org-admin, projects, *, *, allow
+
+    g, carlos, role:admin
+
+  # p, role:qa,  applications, *, */*, allow
+  # p, role:dev, applications, *, */*, allow
+  # p, role:dev, projects, *, *, allow
+  # p, role:dev, repositories, *, *, allow

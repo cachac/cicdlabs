@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-public-api
+  namespace: public-stage
+
+spec:
+  type: ClusterIP
+  ports:
+  - name: public-api
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+
+  selector:
+    app: public-api

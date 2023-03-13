@@ -1,0 +1,55 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: public-stage
+
+commonLabels:
+  app: public-api
+  team: devops
+
+commonAnnotations:
+  note: "This is an STAGE deployment"
+
+resources:
+  - ns.yaml
+  - ../../base
+
+# https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/patchesstrategicmerge/
+patchesStrategicMerge:
+  - deploy-strategic-patch.yaml
+
+# https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/patches/
+# https://fabianlee.org/2022/04/15/kubernetes-kustomize-transformations-with-patchesjson6902/
+patches:
+  # In-line patch
+  - target:
+      kind: Service
+      name: svc-public-api
+    patch: |-
+      - op: add
+        path: /spec/type
+        value: ClusterIP
+  # yaml file patch
+  - target:
+      kind: ConfigMap
+      name: cm-private-api
+    path: cm-patch.yaml
+  - target:
+      kind: Ingress
+      name: public-api
+    path: ing-patch.yaml
+  - target:
+      kind: PersistentVolume
+      name: filestore-nfs-pv
+    path: pv-patch.yaml
+  - target:
+      kind: PersistentVolumeClaim
+      name: filestore-nfs-pvc
+    path: pvc-patch.yaml
+
+# Image patch
+images:
+  - name: KUSTOMIZE-DEFINED
+    newName: cachac/kubelabs_publicapi_test
+    newTag: 1.0.1
+

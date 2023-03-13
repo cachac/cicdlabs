@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-private-api
+  # namespace: public
+data:
+  # PRIVATE_API: http://svc-private-api.private.svc.cluster.local:3002/private
+  PRIVATE_API: PRIVATE_API_URL

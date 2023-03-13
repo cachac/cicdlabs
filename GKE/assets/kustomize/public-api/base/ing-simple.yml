@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: public-api
+  # namespace: public
+  annotations:
+     kubernetes.io/ingress.global-static-ip-name: "api-static-ip"
+    #  networking.gke.io/managed-certificates: managed-cert
+    #  kubernetes.io/ingress.class: "gce"
+    #  kubernetes.io/ingress.allow-http: "false"
+    #  networking.gke.io/v1beta1.FrontendConfig: lb-http-to-https
+
+
+spec:
+  rules:
+  - host: KUSTOMIZE-DEFINED
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: public-api
+            port:
+              number: 3000
+      - path: /graphql
+        pathType: Prefix
+        backend:
+          service:
+            name: public-api
+            port:
+              number: 3000
+

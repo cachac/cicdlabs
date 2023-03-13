@@ -38,14 +38,7 @@ patches:
       kind: Ingress
       name: public-api
     path: ing-patch.yaml
-  - target:
-      kind: PersistentVolume
-      name: filestore-nfs-pv
-    path: pv-patch.yaml
-  - target:
-      kind: PersistentVolumeClaim
-      name: filestore-nfs-pvc
-    path: pvc-patch.yaml
+
 
 # Image patch
 images:

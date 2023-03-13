@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: public-api
+  namespace: public-stage
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: public-api
+  template:
+    metadata:
+      name: public-api
+      labels:
+        app: public-api
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: public-api
+        image: REGISTRY/IMAGE:VERSION
+        # imagePullPolicy: Always
+
+        ports:
+        - containerPort: 3000
+          name: public-api
+        resources:
+          limits:
+            cpu: 20m
+            memory: 200Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+ 
+        envFrom:
+          - configMapRef:
+              name: cm-private-api
+
+      #   volumeMounts:
+      #     - name: vol-logs
+      #       mountPath: /app/logs
+      # volumes:
+      #   - name: vol-logs
+      #     persistentVolumeClaim:
+      #       claimName: pvc-public-api
+      #       #claimName: filestore-nfs-pvc
+

@@ -1,0 +1,22 @@
+- op: replace
+  path: /spec/rules/0/host
+  value: api.cachac.kubelabs2.tk
+- op: add
+  path: /metadata/annotations/kubernetes.io~1ingress.global-static-ip-name
+  value: api-static-ip-prod
+
+# TLS
+- op: replace
+  path: /spec/tls/0/hosts/0
+  value: api.cachac.kubelabs2.tk
+
+- op: add
+  path: /metadata/annotations/cert-manager.io~1issuer
+  value: letsencrypt-prod # letsencrypt-staging
+
+# test-no ssl
+# - op: remove
+#   path: /metadata/annotations/cert-manager.io~1issuer
+
+# - op: remove
+#   path: /spec/tls

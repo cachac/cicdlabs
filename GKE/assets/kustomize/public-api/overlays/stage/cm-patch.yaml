@@ -1,0 +1,3 @@
+- op: replace
+  path: /data/PRIVATE_API
+  value: http://svc-private-api.private-stage.svc.cluster.local:3002/private

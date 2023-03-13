@@ -39,11 +39,4 @@ spec:
           - configMapRef:
               name: cm-private-api
 
-      #   volumeMounts:
-      #     - name: vol-logs
-      #       mountPath: /app/logs
-      # volumes:
-      #   - name: vol-logs
-      #     persistentVolumeClaim:
-      #       claimName: filestore-nfs-pvc
 
