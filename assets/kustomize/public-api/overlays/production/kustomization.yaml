@@ -24,18 +24,11 @@ patches:
       kind: Ingress
       name: public-api
     path: ing-patch.yaml
-  - target:
-      kind: PersistentVolume
-      name: filestore-nfs-pv
-    path: pv-patch.yaml
-  - target:
-      kind: PersistentVolumeClaim
-      name: fs-storage
-    path: pv-patch.yaml
+
 
 # Image patch
 images:
   - name: KUSTOMIZE-DEFINED
     newName: cachac/kubelabs_publicapi_test
-    newTag: 1.0.1
+    newTag: 1.0.0
 
