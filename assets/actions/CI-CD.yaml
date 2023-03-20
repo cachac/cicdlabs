@@ -8,7 +8,7 @@ env:
   REGISTRY: cachac
   IMAGE_NAME: kubelabs_publicapi_test
   DEPLOY_BRANCH: main
-  DEPLOY_REPO: cachac/deploy-demo
+  DEPLOY_REPO: cachac/ops
 
 jobs:
   build:
@@ -69,7 +69,7 @@ jobs:
       VERSION: ${{ needs.build.outputs.RELEASE_VERSION }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: ${{ env.DEPLOY_REPO }}
           ssh-key: ${{ secrets.DEPLOY_TOKEN }}
