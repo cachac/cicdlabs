@@ -7,8 +7,8 @@ on:
 env:
   REGISTRY: cachac
   IMAGE_NAME: kubelabs_publicapi_test
-  DEPLOY_BRANCH: main
-  DEPLOY_REPO: cachac/ops
+  OPS_BRANCH: main
+  OPS_REPO: cachac/ops
 
 jobs:
   build:
@@ -60,8 +60,8 @@ jobs:
       #     title: ${{ env.RELEASE }}
       #     prerelease: false
 
-  deploy:
-    name: Deploy
+  OPS:
+    name: OPS
     runs-on: ubuntu-latest
     needs: build
 
@@ -71,8 +71,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: ${{ env.DEPLOY_REPO }}
-          ssh-key: ${{ secrets.DEPLOY_TOKEN }}
+          repository: ${{ env.OPS_REPO }}
+          ssh-key: ${{ secrets.OPS_TOKEN }}
 
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -90,8 +90,8 @@ jobs:
 
       - name: Commit files
         run: |
-          git config --local user.email "deploy-bot@stotylabs.dev"
-          git config --local user.name "Storylabs deploy-Bot"
+          git config --local user.email "OPS-bot@stotylabs.dev"
+          git config --local user.name "Storylabs OPS-Bot"
           git add .
           git commit -am "New image version, branch: staging, tag: ${{ env.VERSION }}"
           git push --force origin
