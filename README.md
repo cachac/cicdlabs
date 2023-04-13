@@ -5,7 +5,7 @@ github actions + kubernetes + ArgoCD
 
 ## 01. [Github Dev Repo + Dockerhub](./01.Github.md)
 ## 02. [Kubernetes Cluster](./02.KubernetesCluster.md)
-## 03. [OPS definition Files](./03.App.md)
+## 03. [OPS definition Files](./03.Ops.md)
 ## 04. [Kustomize](./04.Kustomize.md)
 ## 05. [Practice](./05.Kustomize%20Practice.md)
 ## 06. [GitOPS](./06.ArgoCD.md)
