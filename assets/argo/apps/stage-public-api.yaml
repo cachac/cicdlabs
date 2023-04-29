@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: public-api
+  name: stage-public-api
   namespace: argocd
 spec:
   destination:
     name: ''
-    namespace: public
+    namespace: public-stage
     server: 'https://kubernetes.default.svc'
   source:
-    path: public-api/overlays/production/
+    path: public-api/overlays/stage/
     repoURL: 'git@github.com:cachac/ops.git'
     targetRevision: HEAD
   project: default
