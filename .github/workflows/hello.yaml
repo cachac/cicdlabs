@@ -5,6 +5,7 @@ on:
   push:
     branches: ["main"]
 
+
 # pipeline
 jobs:
   print:
@@ -12,4 +13,4 @@ jobs:
 
     steps:
       - name: print-to-screen
-        run: echo "Hello world"
+        run: curl ifconfig.me
