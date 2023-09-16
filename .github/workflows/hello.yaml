@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: print-to-screen
-        run: echo "hello #{{ env.TEXT }}"
+        run: echo "hello ${{ env.TEXT }}"
 
       - name: The job has succeded?
         if: ${{ success() }}
