@@ -5,6 +5,8 @@ on:
   push:
     branches: ["main"]
 
+env:
+  TEXT: "Carlos"
 
 # pipeline
 jobs:
@@ -13,4 +15,12 @@ jobs:
 
     steps:
       - name: print-to-screen
-        run: curl ifconfig.me
+        run: echo "hello #{{ env.TEXT }}"
+
+      - name: The job has succeded?
+        if: ${{ success() }}
+        run: echo "Job Success !!!!"
+
+      - name: The job has fail
+        if: ${{ failure() }}
+        run: echo "Job Fails xxxxx"
