@@ -4,4 +4,4 @@ metadata:
   name: cm-private-api
   namespace: public-stage
 data:
-  PRIVATE_API: ENDPOINT
+  PRIVATE_API: PRIVATE_API_URL
