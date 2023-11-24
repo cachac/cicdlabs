@@ -35,7 +35,7 @@ patches:
   # In-line patch
   - target:
       kind: Service
-      name: svc-public-api
+      name: public-api
     patch: |-
       - op: add
         path: /spec/type
@@ -46,6 +46,6 @@ patches:
 # Image patch
 images:
   - name: KUSTOMIZE-DEFINED
-    newName: cachac/kubelabs_publicapi_test
-    newTag: 1.0.1
+    newName: <DOCKER REPO>/kubelabs_publicapi
+    newTag: 1.0.0
 

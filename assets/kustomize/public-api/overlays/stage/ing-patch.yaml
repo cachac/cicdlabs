@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/rules/0/host
-  value: api-stage.cachac.kubelabs.dev
+  value: api-stage.<domain>
 
 # TLS
 - op: replace

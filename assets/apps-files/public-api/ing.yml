@@ -9,7 +9,7 @@ metadata:
 
 spec:
   rules:
-  - host: stage.api.LABUSER.kubelabs.dev
+  - host: api.LABUSER.kubelabs.dev
     http:
       paths:
       - path: /
