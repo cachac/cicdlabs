@@ -21,6 +21,17 @@ patchesStrategicMerge:
 # https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/patches/
 # https://fabianlee.org/2022/04/15/kubernetes-kustomize-transformations-with-patchesjson6902/
 patches:
+# yaml file patch
+  - target:
+      kind: ConfigMap
+      name: cm-private-api
+    path: cm-patch.yaml
+
+  - target:
+      kind: Ingress
+      name: public-api
+    path: ing-patch.yaml
+
   # In-line patch
   - target:
       kind: Service
@@ -29,15 +40,7 @@ patches:
       - op: add
         path: /spec/type
         value: ClusterIP
-  # yaml file patch
-  - target:
-      kind: ConfigMap
-      name: cm-private-api
-    path: cm-patch.yaml
-  - target:
-      kind: Ingress
-      name: public-api
-    path: ing-patch.yaml
+
 
 
 # Image patch
