@@ -4,4 +4,4 @@ metadata:
   name: cm-private-api
   namespace: public-stage
 data:
-  PRIVATE_API: http://svc-private-api.private.svc.cluster.local:3002/private
+  PRIVATE_API: ENDPOINT
