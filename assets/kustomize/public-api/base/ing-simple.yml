@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   name: public-api
   # namespace: public
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: "nginx"
 
 spec:
   rules:

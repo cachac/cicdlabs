@@ -2,6 +2,8 @@
   path: /spec/rules/0/host
   value: api-stage.<domain>
 
+
+# Ejemplo Let's Encrypt SSL 
 # TLS
 - op: replace
   path: /spec/tls/0/hosts/0

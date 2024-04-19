@@ -17,8 +17,8 @@ spec:
       labels:
         app: public-api
     spec:
-      imagePullSecrets:
-        - name: regcred
+      #imagePullSecrets:
+      #  - name: regcred
       containers:
       - name: public-api
         image: REGISTRY/IMAGE:VERSION

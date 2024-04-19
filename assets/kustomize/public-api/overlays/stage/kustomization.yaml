@@ -3,9 +3,16 @@ kind: Kustomization
 
 namespace: public-stage
 
+# deprecated
 commonLabels:
   app: public-api
   team: devops
+
+# labels:
+# - pairs:
+#     app: public-api
+#     team: devops
+#   includeSelectors: true
 
 commonAnnotations:
   note: "This is an STAGE deployment"
@@ -47,5 +54,5 @@ patches:
 images:
   - name: KUSTOMIZE-DEFINED
     newName: <DOCKER REPO>/kubelabs_publicapi
-    newTag: 1.0.0
+    newTag: 1.0.0  # <- cambiar la version correcta.
 
