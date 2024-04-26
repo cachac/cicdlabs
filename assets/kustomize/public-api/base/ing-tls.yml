@@ -5,10 +5,6 @@ metadata:
   # namespace: public
 
 spec:
-  tls:
-    - secretName: ssl
-      hosts:
-        - KUSTOMIZE-DEFINED
   rules:
     - host: KUSTOMIZE-DEFINED
       http:
